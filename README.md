@@ -13,7 +13,7 @@ These Skills conform strictly to the **Anvita Flow** manifest specifications, en
 ## Skills Architecture & Manifests
 
 ### 1. Solidity Static Analysis Skill
-*   **Path**: `[skills/static_analysis/](file:///c:/Users/REGGIEHUBS/pharos/skills/static_analysis/)`
+*   **Path**: [skills/static_analysis/](./skills/static_analysis/)
 *   **Pricing**: `0.01 PHRS` per call
 *   **Key Capabilities**:
     *   *Floating Pragma Check*: Flags unpinned compiler versions.
@@ -65,7 +65,7 @@ These Skills conform strictly to the **Anvita Flow** manifest specifications, en
 ---
 
 ### 2. Solidity Threat Modeling Skill
-*   **Path**: `[skills/threat_modeling/](file:///c:/Users/REGGIEHUBS/pharos/skills/threat_modeling/)`
+*   **Path**: [skills/threat_modeling/](./skills/threat_modeling/)
 *   **Pricing**: `0.015 PHRS` per call
 *   **Key Capabilities**:
     *   *User Roles Extraction*: Discovers defined administrative state variables and custom privilege classes (Owner, Admin, custom roles).
@@ -129,7 +129,13 @@ These Skills conform strictly to the **Anvita Flow** manifest specifications, en
 
 Verify both skills against our unit test suites and CLI audit harness.
 
-### 1. Prerequisites
+### 1. Clone the Repository
+```bash
+git clone https://github.com/0xnald/pharos-smart-contract-auditor.git
+cd pharos-smart-contract-auditor
+```
+
+### 2. Prerequisites
 - Python 3.8+ (No external third-party dependencies are required. The parsers run natively using Python's standard `re` and compiler tools).
 
 ### 2. Run Unit Tests
