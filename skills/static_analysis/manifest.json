@@ -1,0 +1,40 @@
+{
+  "name": "solidity_static_analysis",
+  "display_name": "Solidity Static Analysis",
+  "description": "Scans Solidity source code for structural security vulnerabilities, including reentrancy, visibility omissions, unchecked return values, and auth modifiers.",
+  "version": "1.0.0",
+  "category": "Security",
+  "pricing": {
+    "token": "PHRS",
+    "price_per_call": "0.01"
+  },
+  "inputs": {
+    "source_code": {
+      "type": "string",
+      "description": "The raw Solidity smart contract source code to audit.",
+      "required": true
+    }
+  },
+  "outputs": {
+    "vulnerabilities": {
+      "type": "array",
+      "description": "List of found structural vulnerabilities.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "severity": { "type": "string" },
+          "line": { "type": "integer" },
+          "snippet": { "type": "string" },
+          "description": { "type": "string" },
+          "remediation": { "type": "string" }
+        }
+      }
+    },
+    "score": {
+      "type": "integer",
+      "description": "Security health score from 0 (critical) to 100 (secure)."
+    }
+  }
+}

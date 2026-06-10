@@ -1,0 +1,51 @@
+{
+  "name": "solidity_threat_modeling",
+  "display_name": "Solidity Threat Modeling",
+  "description": "Analyzes smart contract functions, privilege levels, modifier bounds, and dependencies to model access control boundaries and potential logical exploit vectors.",
+  "version": "1.0.0",
+  "category": "Security",
+  "pricing": {
+    "token": "PHRS",
+    "price_per_call": "0.015"
+  },
+  "inputs": {
+    "source_code": {
+      "type": "string",
+      "description": "The Solidity contract code to analyze.",
+      "required": true
+    }
+  },
+  "outputs": {
+    "roles": {
+      "type": "array",
+      "description": "Identified user/system roles in the contract (e.g., Owner, Admin, User).",
+      "items": { "type": "string" }
+    },
+    "privileged_functions": {
+      "type": "array",
+      "description": "List of functions restricted by modifiers/require conditions.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "modifier": { "type": "string" },
+          "line": { "type": "integer" }
+        }
+      }
+    },
+    "threats": {
+      "type": "array",
+      "description": "Exploit risk threats modeled from the contract structure.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "severity": { "type": "string" },
+          "description": { "type": "string" },
+          "remediation": { "type": "string" }
+        }
+      }
+    }
+  }
+}
