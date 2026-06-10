@@ -153,6 +153,64 @@ python skills/threat_modeling/test_skill.py
 To run the CLI test harness, which scans two sample smart contracts (`VulnerableBank.sol` and `SecureBank.sol`) and prints formatted reports:
 ```bash
 python test_harness.py
+---
+
+## Programmatic Integration & API Usage
+
+For other builders and agents in the Pharos Network / Anvita Flow ecosystem, here is how you can invoke and integrate these skills:
+
+### 1. Python Integration
+If you are developing a Python-based agent, you can import and call the handlers directly:
+
+```python
+from skills.static_analysis import handler as static_analyzer
+from skills.threat_modeling import handler as threat_modeler
+
+source_code = """
+pragma solidity 0.8.20;
+contract Simple {
+    address public owner;
+}
+"""
+
+# Run static analysis
+static_report = static_analyzer.analyze(source_code)
+print("Static Score:", static_report["score"])
+
+# Run threat modeling
+threat_report = threat_modeler.analyze(source_code)
+print("Found Roles:", threat_report["roles"])
+```
+
+### 2. HTTP API Integration (A2A Gateway)
+When deployed inside an Anvita Flow container, the skills are invoked via a standard HTTP POST request.
+
+**Request:**
+*   **Method**: `POST`
+*   **Headers**: `Content-Type: application/json`
+*   **Body**:
+    ```json
+    {
+      "source_code": "pragma solidity ^0.8.0; contract Test {}"
+    }
+    ```
+
+**Example JSON Response (Static Analysis)**:
+```json
+{
+  "vulnerabilities": [
+    {
+      "id": "SOL-PRAGMA-001",
+      "name": "Floating Pragma",
+      "severity": "Low",
+      "line": 2,
+      "snippet": "pragma solidity ^0.8.0;",
+      "description": "The contract uses a floating pragma (^0.8.0)...",
+      "remediation": "Lock the compiler version..."
+    }
+  ],
+  "score": 97
+}
 ```
 
 ---
