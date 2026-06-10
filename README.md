@@ -131,8 +131,8 @@ Verify both skills against our unit test suites and CLI audit harness.
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/0xnald/pharos-smart-contract-auditor.git
-cd pharos-smart-contract-auditor
+git clone https://github.com/0xnald/pharos-audit-skillpack.git
+cd pharos-audit-skillpack
 ```
 
 ### 2. Prerequisites
